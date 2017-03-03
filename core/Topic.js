@@ -9,8 +9,10 @@ class Topic extends Actor {
             author: data.author,
             title: data.title,
             content: data.content,
+            top: false,//置顶
+            fine: false,//加精
             createTime: Date.now(),
-            updateTime: data.updateTime
+            updateTime: Date.now()
         });
     }
 
