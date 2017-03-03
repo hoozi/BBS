@@ -1,0 +1,26 @@
+{
+  "name": "bbs",
+  "version": "1.0.0",
+  "description": "CQRS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoozi/BBS.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoozi/BBS/issues"
+  },
+  "homepage": "https://github.com/hoozi/BBS#readme",
+  "dependencies": {
+    "cqrs": "^1.0.7-pre",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0"
+  }
+}
