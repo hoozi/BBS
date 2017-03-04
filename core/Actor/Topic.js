@@ -1,8 +1,12 @@
 'use strict';
 
-const Domain = require("cqrs");
-const Actor = Domain.Actor;
+const Actor = require("cqrs").Actor;
 
+/**
+ * Topic Actor
+ * @class Topic
+ * @extends {Actor}
+ */
 class Topic extends Actor {
     constructor(data) {
         super({
