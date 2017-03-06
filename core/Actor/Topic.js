@@ -32,32 +32,31 @@ class Topic extends Actor {
         service.apply('update', data);
     }
     when(event) {
-        let name = event.name
-            , data = this._data
-            , { top, fine, title, content, accessNum, createTime, updateTime } = data;
-        switch (event.name) {
+        let eventName = event.name
+            , data = this._data;
+        switch (eventName) {
             case 'top':
-                top = true;
+                data.top = true;
                 break;
-            case 'uptop':
-                top = false;
+            case 'untop':
+                data.top = false;
                 break;
             case 'fine':
-                fine = true;
+                data.fine = true;
                 break;
             case 'unfine':
-                unfine = false;
+                data.unfine = false;
                 break;
             case 'access':
-                ++accessNum;
+                ++data.accessNum;
                 break;
             case 'update':
-                title = event.data.title;
-                content = event.data.content;
-                updateTime = Date.now();
+                data.title = event.data.title;
+                data.content = event.data.content;
+                data.updateTime = Date.now();
                 break;
         }
     }
 }
 
-module.exports = Topic
+module.exports = Topic;
