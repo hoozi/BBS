@@ -1,6 +1,7 @@
 'use strict';
 
-const Actor = require("cqrs").Actor;
+const Actor = require('cqrs').Actor
+    , TopicModel = require('../model/model.Topic');
 
 /**
  * Topic Actor
@@ -9,16 +10,8 @@ const Actor = require("cqrs").Actor;
  */
 class Topic extends Actor {
     constructor(data) {
-        super({
-            author: data.author,
-            title: data.title,
-            content: data.content,
-            accessNum: 0,
-            top: false,//置顶
-            fine: false,//加精
-            createTime: Date.now(),
-            updateTime: Date.now()
-        });
+        let model = TopicModel(data);
+        super(model);
     }
     top(data, service) {
         service.apply('top');
@@ -33,25 +26,38 @@ class Topic extends Actor {
         service.apply('unfine');
     }
     access(data, service) {
-        service.apply('access')
+        service.apply('access');
+    }
+    update(data, service) {
+        service.apply('update', data);
     }
     when(event) {
-        switch(event.name) {
+        let name = event.name
+            , data = this._data
+            , { top, fine, title, content, accessNum, createTime, updateTime } = data;
+        switch (event.name) {
             case 'top':
-                this._data.top = true;
-            break;
+                top = true;
+                break;
             case 'uptop':
-                this._data.top = false;
-            break;
+                top = false;
+                break;
             case 'fine':
-                this._data.fine = true;
-            break;
+                fine = true;
+                break;
             case 'unfine':
-                this._data.unfine = false;
-            break;
+                unfine = false;
+                break;
             case 'access':
-                ++this._data.accessNum;
-            break;
+                ++accessNum;
+                break;
+            case 'update':
+                title = event.data.title;
+                content = event.data.content;
+                updateTime = Date.now();
+                break;
         }
     }
 }
+
+module.exports = Topic
