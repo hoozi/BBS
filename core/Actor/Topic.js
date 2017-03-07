@@ -1,7 +1,7 @@
 'use strict';
 
 const Actor = require('cqrs').Actor
-    , TopicModel = require('../model/model.Topic');
+    , TopicModel = require('../model/Topic');
 
 /**
  * Topic Actor
