@@ -45,7 +45,7 @@ class Topic extends Actor {
                 data.fine = true;
                 break;
             case 'unfine':
-                data.unfine = false;
+                data.fine = false;
                 break;
             case 'access':
                 ++data.accessNum;
