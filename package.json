@@ -16,6 +16,7 @@
     "url": "https://github.com/hoozi/BBS/issues"
   },
   "homepage": "https://github.com/hoozi/BBS#readme",
+  "devDependencies":{},
   "dependencies": {
     "cqrs": "^1.0.7-pre",
     "react": "^15.4.2",
