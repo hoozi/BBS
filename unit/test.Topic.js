@@ -3,15 +3,15 @@
 const Topic = require('../core/Actor/Topic')
     , Domain = require('cqrs')
     , should = require('should')
-    , domain = new Domain()
-domain.register(Topic)
+    , domain = new Domain();
+domain.register(Topic);
 
 describe('Topic', function () {
     let TopicId;
 
     //测试create
     it('#create', function (done) {
-        domain.create('Topic', { title: 'test title', content: 'test content' })
+        domain.create('Topic', { title: 'test title', content: 'test 1111111111111111content' })
             .then(function (data) {
                 console.log(data);
                 TopicId = data.id;
