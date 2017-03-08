@@ -4,7 +4,6 @@ const {isLength} = require('validator');
 
 function _vaildator(data) {
     let {title, content} = data;
-    console.log(title,content)
     return title && content && isLength(title, {
         min: 5,
         max: 20
