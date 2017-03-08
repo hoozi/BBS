@@ -16,7 +16,10 @@
     "url": "https://github.com/hoozi/BBS/issues"
   },
   "homepage": "https://github.com/hoozi/BBS#readme",
-  "devDependencies":{},
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "should": "^11.2.0"
+  },
   "dependencies": {
     "cqrs": "^1.0.7-pre",
     "react": "^15.4.2",
