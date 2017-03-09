@@ -14,6 +14,8 @@ class User extends Actor {
         super(model);
     }
 
+    
+
     /**
      * 加分
      * @param {object | null} data
@@ -84,6 +86,31 @@ class User extends Actor {
             case 'updatePassword':
                 data.password = eventData;
         }
+    }
+
+
+    /**
+     * 验证重复
+     * @static
+     * @param {object} data 
+     * @param {function} service 
+     * @returns 
+     * 
+     * @memberOf User
+     */
+    static createBefor(data, service) {
+
+        return new Promise((resolve, reject)=>{
+            service.get('UserRecorder','recorder').then((rdata)=>{
+                let loginName = data['loginName']
+                ,   email = data['email'];
+                if((loginName in rdata['loginName'] ) || (email in rdata['email'] )) {
+                    reject('ditto!');
+                } else {
+                    resolve();
+                }
+            });
+        })
     }
 }
 

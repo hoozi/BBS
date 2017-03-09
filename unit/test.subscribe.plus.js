@@ -1,17 +1,20 @@
 const Reply = require('../core/Actor/Reply'),
+    UserRecorder = require('../core/Actor/UserRecorder'),
     Topic = require('../core/Actor/Topic'),
     User = require('../core/Actor/User'),
     plus = require('../core/subscribe/plus'),
     Domain = require('cqrs'),
     should = require('should'),
     domain = new Domain();
-domain.register(Reply).register(Topic).register(User);
+domain.register(Reply).register(Topic).register(User).register(UserRecorder);
 
 describe('plus', () => {
 
     let UserId;
 
     plus(domain);
+    
+    domain.create('UserRecorder');
 
     //测试发帖积分+10
     it('#plus 10', done => {

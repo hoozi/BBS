@@ -1,14 +1,20 @@
 'use strict';
 
 const Domain = require('cqrs')
+,UserRecorder = require('../core/Actor/UserRecorder')
+,recorder = require('../core/subscribe/recorder')
 ,User = require('../core/Actor/User')
 ,should = require('should')
 ,domain = new Domain()
 
-domain.register(User);
+domain.register(User).register(UserRecorder);
 
 describe('User', function(){
     let UserId;
+
+    recorder(domain);
+    domain.create('UserRecorder');
+
     //测试create
     it('#create', done=>{
         domain.create('User',{
