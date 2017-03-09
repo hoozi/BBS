@@ -21,7 +21,7 @@ class User extends Actor {
      * @memberOf User
      */
     plus(data, service) {
-        service.apply('plus');
+        service.apply('plus',data.integral);
     }
 
     /**
@@ -31,7 +31,7 @@ class User extends Actor {
      * @memberOf User
      */
     minus(data, service) {
-        service.apply('minus');
+        service.apply('minus',data.integral);
     }
 
     /**
@@ -70,10 +70,10 @@ class User extends Actor {
             data = this._data;
         switch (eventName) {
             case 'plus':
-                ++data.num;
+                data.integral+= eventData;
                 break;
             case 'minus':
-                --data.num;
+                data.integral-= eventData;
                 break;
             case 'updateEmail':
                 data.email = eventData;
