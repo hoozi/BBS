@@ -30,18 +30,18 @@ describe('User', function(){
 
     //测试加分
     it("#User.plus", done=>{
-        domain.call(`User.${UserId}.plus`);
+        domain.call(`User.${UserId}.plus`,{integral:4});
         domain.get('User', UserId).then((data)=>{
-            data.num.should.equal(1); 
+            data.integral.should.equal(4); 
         });
         done();
     })
 
     //测试减分
     it("#User.minus", done=>{
-        domain.call(`User.${UserId}.minus`);
+        domain.call(`User.${UserId}.minus`,{integral:5});
         domain.get('User', UserId).then((data)=>{
-            data.num.should.equal(0); 
+            data.integral.should.equal(-1); 
         });
         done();
     });
